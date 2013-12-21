@@ -20,6 +20,10 @@ class AuthenticationFactory
             return new AccessToken($config['access_token']);
         }
 
+        if (isset($config['client_id']) && isset($config['client_secret'])) {
+            return new ClientSecret($config['client_id'], $config['client_secret']);
+        }
+
         return false;
     }
 }

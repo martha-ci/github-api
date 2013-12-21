@@ -22,9 +22,6 @@ class Oauth extends AbstractRequest
      */
     public function accessToken(array $parameters = array())
     {
-        $defaults = array('page' => 1);
-        $parameters = array_merge($defaults, $parameters);
-
         $response = $this->client->post('/login/oauth/access_token', $parameters, Client::GITHUB_URL);
         parse_str($response, $result);
 
