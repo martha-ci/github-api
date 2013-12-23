@@ -65,7 +65,7 @@ class Client
      * @param array $config
      * @param AbstractClient $httpClient
      */
-    public function __construct($config = array(), AbstractClient $httpClient = null)
+    public function __construct(array $config = array(), AbstractClient $httpClient = null)
     {
         if (!$httpClient) {
             $httpClient = new Curl();
@@ -76,6 +76,18 @@ class Client
 
         $authenticationFactory = new AuthenticationFactory();
         $this->authentication = $authenticationFactory->createAuthentication($config);
+    }
+
+    /**
+     * @param array $config
+     * @return $this
+     */
+    public function setAuthentication(array $config = array())
+    {
+        $authenticationFactory = new AuthenticationFactory();
+        $this->authentication = $authenticationFactory->createAuthentication($config);
+
+        return $this;
     }
 
     /**
